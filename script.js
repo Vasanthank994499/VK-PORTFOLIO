@@ -229,13 +229,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const message = document.getElementById('message').value;
 
             // Construct the email body
-            const body = `Name: ${name}%0D%0AWhatsApp: ${whatsapp}%0D%0AEmail: ${email}%0D%0AProject Type: ${projectType}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            const emailBody = `Name: ${name}\nWhatsApp: ${whatsapp}\nEmail: ${email}\nProject Type: ${projectType}\n\nMessage:\n${message}`;
 
-            // Construct the Gmail-specific compose URL
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=vasanthankasvk@gmail.com&su=Portfolio%20Inquiry%20from%20${encodeURIComponent(name)}&body=${body}`;
+            // Create a mailto link which triggers the default mail app (e.g. Gmail App)
+            const mailtoLink = `mailto:vasanthankasvk@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(emailBody)}`;
 
-            // Open Gmail in a new tab
-            window.open(gmailUrl, '_blank');
+            // Trigger the mail app
+            window.location.href = mailtoLink;
         });
     }
 });
