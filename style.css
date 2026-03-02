@@ -46,7 +46,7 @@ nav {
     /* Removed rounded corners and margin to fit screen */
     border-radius: 0;
     -webkit-border-radius: 0;
-    overflow: hidden;
+    /* overflow: hidden; Removed for mobile menu */
     margin: 0;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     box-sizing: border-box;
@@ -266,12 +266,9 @@ nav {
 
     opacity: 0;
 
-    /* Smooth bottom cut */
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    /* Removed mask-image to prevent glow clipping */
 
-    animation:
-        popZoom 0.8s ease forwards,
+    animation: popZoom 0.8s ease forwards,
         slideRight 0.6s ease forwards 0.8s;
 
 }
@@ -703,9 +700,7 @@ h2 {
     margin-top: -60px;
     /* Shift it up */
 
-    /* Smooth bottom cut */
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    /* Removed mask-image to prevent glow clipping */
 }
 
 
@@ -1261,7 +1256,12 @@ h2 {
 
     .hamburger {
         display: flex;
-        /* Show on mobile */
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.05);
+        /* Light glass background for icon */
+        border-radius: 8px;
+        padding: 5px;
     }
 
     .menu {
@@ -1299,14 +1299,17 @@ h2 {
         padding: 15px 10px;
         font-size: 20px;
         width: 85%;
-        /* 'Little in' on left and right side */
         text-align: center;
         background: rgba(255, 255, 255, 0.07);
-        /* Subtle box appearance */
         border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 14px;
         box-sizing: border-box;
         transition: all 0.3s ease;
+        display: block;
+        /* Ensure it's a block for layout */
+        color: white !important;
+        /* Force visibility */
+        text-decoration: none;
     }
 
     .menu a:active,
@@ -2307,8 +2310,25 @@ body {
 /* 3. Aura Glow Behind Hero Images & Portraits */
 .hero .me-image,
 .about-image {
-    filter: drop-shadow(0 0 30px rgba(137, 233, 0, 0.15)) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.5));
+    filter: drop-shadow(0 0 40px rgba(137, 233, 0, 0.25)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
     transition: filter 0.5s ease, transform 0.5s ease;
+    overflow: visible;
+    /* Ensure shadow isn't clipped by image bounds */
+}
+
+/* New technique for smooth bottom cut without clipping the glow */
+.hero::after,
+#about::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15vh;
+    background: linear-gradient(to bottom, transparent, #222222 90%);
+    pointer-events: none;
+    z-index: 5;
+    /* Sit over the image but keep text on top (text uses z-index 10 usually) */
 }
 
 .hero .me-image:hover,
