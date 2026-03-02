@@ -1,13 +1,41 @@
-/* EFF.css - extracted from Main.html */
+* {
+    box-sizing: border-box;
+}
 
-/* BODY */
+/* SLEEK DARK SCROLLBAR (Fixing the "white" default look) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333333;
+    border-radius: 5px;
+    border: 2px solid #111111;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #89E900;
+}
+
+html {
+    overflow: hidden;
+    /* Hide HTML scrollbar */
+    height: 100%;
+}
 
 body {
     margin: 0;
     padding: 0;
-}
-
-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Only body scrolls */
+    width: 100%;
+    height: 100%;
+    position: relative;
     font-family: 'Outfit', sans-serif;
     background: #222222;
     color: white;
@@ -426,6 +454,7 @@ nav {
     min-height: 100vh;
     width: 100%;
     position: relative;
+    overflow: visible;
 }
 
 
@@ -1267,7 +1296,9 @@ h2 {
     .menu {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
+        /* Positioned right but shifted out of view */
+        transform: translateX(100%);
         /* Hidden by default */
         width: 75%;
         height: 100vh;
@@ -1281,17 +1312,26 @@ h2 {
         /* Explicitly list in column */
         justify-content: center;
         align-items: center;
-        transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 10000;
         gap: 30px;
         /* Space between column items */
         padding: 0;
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
+        /* Allow menu scroll if needed */
+        scrollbar-width: none;
+        /* Hide scrollbar for menu */
+        -ms-overflow-style: none;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
     }
 
 
     .menu.active {
-        right: 0;
+        transform: translateX(0);
         /* Slide in */
     }
 
@@ -1668,8 +1708,8 @@ h2 {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-image:
         linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -2114,36 +2154,8 @@ h2 {
    ========================================================= */
 
 
-/* --- 2. Scroll Progress Bar --- */
-.scroll-progress-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    z-index: 10000;
-}
+/* --- 2. Scroll Progress Bar Removed --- */
 
-.scroll-progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #00ffcc, #00bfff, #ff00ff);
-    background-size: 200% 100%;
-    animation: gradientMove 3s linear infinite;
-    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00bfff;
-    border-radius: 0 5px 5px 0;
-}
-
-@keyframes gradientMove {
-    0% {
-        background-position: 100% 0;
-    }
-
-    100% {
-        background-position: -100% 0;
-    }
-}
 
 /* --- 3. Ambient Section Glows (Massive background lighting) --- */
 .section-ambient {
@@ -2226,9 +2238,6 @@ h2 {
 }
 
 /* Ensure body doesn't cause weird scrolling because of ambient orbs bleeding off */
-body {
-    overflow-x: hidden;
-}
 
 /* =========================================================
    CLEAN & PROFESSIONAL PREMIUM GRAPHICAL UPGRADES
@@ -2342,22 +2351,4 @@ body {
 .software-list li {
     position: relative;
     overflow: hidden;
-}
-
-/* 5. Custom Sleek Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #89E900;
 }
