@@ -242,15 +242,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // MAX GRAPHICAL ELEMENTS JAVASCRIPT LOGIC
     // ==========================================
 
-    // 1. Scroll Progress Bar
-    const progressBar = document.querySelector('.scroll-progress-bar');
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        if (progressBar) {
-            progressBar.style.width = scrollPercent + '%';
-        }
-    });
 
 });
