@@ -2,17 +2,13 @@
 
 /* BODY */
 
-html,
 body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    overflow-x: hidden;
-    /* Disable horizontal scroll */
 }
 
 body {
-    font-family: Arial;
+    font-family: 'Outfit', sans-serif;
     background: #222222;
     color: white;
     scroll-behavior: smooth;
@@ -23,7 +19,7 @@ body {
 /* DYNAMIC NAVBAR */
 
 nav {
-    padding: 15px 30px;
+    padding: 8px 30px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -101,10 +97,10 @@ nav {
 
     position: relative;
     color: white;
-    margin: 15px;
+    margin: 10px;
     text-decoration: none;
-    font-size: 18px;
-    padding: 10px 22px;
+    font-size: 16px;
+    padding: 8px 18px;
     border-radius: 14px;
     transition: all 0.3s ease;
     /* Transition all for background changes */
@@ -135,27 +131,41 @@ nav {
 }
 
 /* OVERRIDE FOR HIRE BUTTON */
-.menu a.hire,
-.menu a.hire:active,
-.menu a.hire.active {
+.menu a.hire {
+    background: rgba(137, 233, 0, 0.05) !important;
+    color: #89E900 !important;
+    border: 1px solid rgba(137, 233, 0, 0.5);
+    box-shadow: 0 0 10px rgba(137, 233, 0, 0.1), inset 0 0 10px rgba(137, 233, 0, 0.05) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.2s ease !important;
     -webkit-background-clip: border-box !important;
     background-clip: border-box !important;
     text-decoration: none !important;
-    box-shadow: none !important;
     -webkit-text-fill-color: initial !important;
+    overflow: hidden;
 }
 
-.menu a.hire {
-    background: linear-gradient(135deg, #89E900 0%, #000000 150%) !important;
-    color: white !important;
-    border: 1px solid rgba(137, 233, 0, 0.3);
+.menu a.hire:hover {
+    background: #89E900 !important;
+    color: #000000 !important;
+    box-shadow: 0 0 20px rgba(137, 233, 0, 0.6), 0 0 40px rgba(137, 233, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-2px) scale(1.05);
+    border-color: #89E900 !important;
 }
 
 .menu a.hire:active,
 .menu a.hire.active {
-    background: linear-gradient(135deg, #7ad100 0%, #000000 150%) !important;
+    background: #7ad100 !important;
     color: black !important;
-    text-shadow: none !important;
+    box-shadow: 0 0 10px rgba(137, 233, 0, 0.4) !important;
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Hide the default white neon border pseudo-element for the hire button */
+.menu a.hire::before {
+    display: none !important;
 }
 
 
@@ -252,9 +262,13 @@ nav {
 
     /* Size */
 
-    width: 520px;
+    width: 450px;
 
     opacity: 0;
+
+    /* Smooth bottom cut */
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 
     animation:
         popZoom 0.8s ease forwards,
@@ -436,12 +450,10 @@ section {
 }
 
 h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-.highlight-color {
-    color: #89E900;
+    font-size: 42px;
+    margin-bottom: 25px;
+    text-align: center;
+    width: 100%;
 }
 
 
@@ -472,21 +484,25 @@ h2 {
     align-items: center;
     /* Centers the whole block so heading is centered above the list */
     text-align: left;
+    /* Max Graphical Elements: Premium Glassmorphism Panel */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.02);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.skills-heading,
-.software-heading {
-    color: #89E900;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 25px;
-    font-size: 42px;
-    opacity: 0;
-    /* Hidden initially, set by animation */
-    /* Making the headings noticeably bigger */
-    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.9);
-    /* Black drop shadow falling to the right side */
+.skills-left:hover,
+.skills-right:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 255, 204, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 255, 204, 0.1), inset 0 0 20px rgba(0, 255, 204, 0.05);
 }
+
+/* (Removed skills-heading rules since they are now natively in h2 and title-effect) */
 
 .skills-list,
 .software-list {
@@ -495,14 +511,27 @@ h2 {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    width: 100%;
+    /* For full width hover effects */
 }
 
 /* Bullet points styling specifically for Skills */
 .skills-list li {
     position: relative;
-    padding-left: 25px;
+    padding-left: 30px;
+    /* slightly more room */
     opacity: 0;
     /* Hidden initially */
+    transition: transform 0.3s ease, color 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    cursor: default;
+}
+
+.skills-list li:hover {
+    transform: translateX(10px);
+    color: #00ffcc;
+    background: linear-gradient(90deg, rgba(0, 255, 204, 0.1), transparent);
+    border-radius: 8px;
 }
 
 .skills-list li::before {
@@ -520,6 +549,15 @@ h2 {
     gap: 15px;
     opacity: 0;
     /* Hidden initially */
+    padding: 5px 10px;
+    transition: transform 0.3s ease, color 0.3s ease, background 0.3s ease;
+    border-radius: 12px;
+}
+
+.software-list li:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.1);
 }
 
 .software-icon {
@@ -544,14 +582,6 @@ h2 {
 #work h2 {
     margin-top: -30px;
     margin-bottom: 30px;
-    color: white;
-    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9);
-    transition: all 0.3s ease;
-}
-
-#work h2:hover {
-    color: #89e900;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
 }
 
 
@@ -644,13 +674,6 @@ h2 {
 #about h2 {
     margin-top: 150px;
     /* Increased to push even further down */
-    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.9);
-    transition: all 0.3s ease;
-}
-
-#about h2:hover {
-    color: #89e900;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
 }
 
 .about-container {
@@ -679,6 +702,10 @@ h2 {
     opacity: 0;
     margin-top: -60px;
     /* Shift it up */
+
+    /* Smooth bottom cut */
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
 
@@ -690,6 +717,21 @@ h2 {
     line-height: 40px;
     color: #ddd;
     opacity: 0;
+    /* Max Graphical Elements: Premium Glassmorphism Panel */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.02);
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-text:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0, 255, 204, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 255, 204, 0.1), inset 0 0 20px rgba(0, 255, 204, 0.05);
 }
 
 .about-text p {
@@ -848,27 +890,13 @@ h2 {
     }
 }
 
-/* Base application in active section only */
-.page-section.active-section .skills-heading,
-.page-section.active-section .software-heading {
-    animation: popDown 0.6s ease forwards;
+/* Base application in active section only for ALL Titles */
+.page-section.active-section .title-effect {
+    animation: popDown 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    opacity: 0;
 }
 
-@keyframes workSlideDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-100px);
-    }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.page-section.active-section #work h2 {
-    animation: workSlideDown 1.0s cubic-bezier(0.165, 0.84, 0.44, 1) forwards 0.3s;
-}
 
 
 .page-section.active-section .about-image {
@@ -954,32 +982,35 @@ h2 {
 
 #hire h2 {
     margin-top: 100px;
-    transition: all 0.3s ease;
 }
 
-#hire h2:hover {
-    color: #89e900;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
-}
 
-.contact-heading {
-    color: #89e900;
-    font-size: 26px;
-    margin-bottom: 30px;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
+
 
 /* CONTACT FORM */
 
 .contact-form {
-    width: 350px;
-    /* Specific width as requested per label/box combo */
+    width: 450px;
+    /* Increased width for Glassmorphism panel padding */
     margin-top: 30px;
     display: flex;
     flex-direction: column;
     gap: 25px;
     /* Space between input boxes */
+
+    /* Max Graphical Elements: Premium Glassmorphism Panel */
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px 50px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.04);
+}
+
+.contact-form:focus-within {
+    border-color: rgba(0, 255, 204, 0.5);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 255, 204, 0.2), inset 0 0 20px rgba(0, 255, 204, 0.1);
 }
 
 
@@ -1008,7 +1039,7 @@ h2 {
     color: white;
     outline: none;
     transition: all 0.3s ease;
-    font-family: Arial;
+    font-family: 'Outfit', sans-serif;
     /* Keep font consistent */
     resize: none;
     /* Prevent manual resizing for clean UI */
@@ -1054,10 +1085,6 @@ h2 {
     box-shadow: 0 5px 15px rgba(137, 233, 0, 0.4);
 }
 
-.contact {
-    font-size: 20px;
-    line-height: 35px;
-}
 
 
 
@@ -1066,7 +1093,7 @@ h2 {
 .footer-container {
     width: 100%;
     padding: 25px 0;
-    margin: 0;
+    margin-top: 100px;
     display: grid;
     place-items: center;
     /* Dead center alignment */
@@ -1210,17 +1237,6 @@ h2 {
     filter: brightness(0);
 }
 
-@media (max-width: 600px) {
-    .footer-right {
-        bottom: 20px;
-        right: 20px;
-    }
-
-    .footer-message-fab {
-        width: 55px;
-        height: 55px;
-    }
-}
 
 
 /* --- DEDICATED MOBILE VIEW --- */
@@ -1229,7 +1245,7 @@ h2 {
 
     /* NAVIGATION */
     nav {
-        padding: 10px 20px;
+        padding: 15px 20px;
         margin: 0;
         justify-content: space-between;
         position: fixed;
@@ -1237,6 +1253,10 @@ h2 {
         left: 0;
         top: 0;
         border-radius: 0;
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .hamburger {
@@ -1249,10 +1269,12 @@ h2 {
         top: 0;
         right: -100%;
         /* Hidden by default */
-        width: 70%;
+        width: 75%;
         height: 100vh;
-        background: rgba(0, 0, 0, 0.98);
-        backdrop-filter: blur(15px);
+        background: rgba(5, 5, 5, 0.95);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
         display: flex !important;
         /* Force flex mode */
         flex-direction: column !important;
@@ -1261,9 +1283,10 @@ h2 {
         align-items: center;
         transition: right 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         z-index: 10000;
-        gap: 40px;
+        gap: 30px;
         /* Space between column items */
         padding: 0;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     }
 
 
@@ -1312,7 +1335,7 @@ h2 {
     #home.hero {
         justify-content: center;
         /* Hero can stay centered */
-        padding-top: 50px;
+        padding-top: 80px;
     }
 
     .me-image {
@@ -1338,11 +1361,11 @@ h2 {
     }
 
     .hello {
-        font-size: 40px !important;
+        font-size: 45px !important;
     }
 
     .subtitle {
-        font-size: 26px !important;
+        font-size: 28px !important;
     }
 
     .role {
@@ -1391,22 +1414,66 @@ h2 {
 
     .about-text {
         text-align: center !important;
-        font-size: 18px !important;
-        line-height: 30px !important;
-        padding: 0 20px 50px;
+        font-size: 20px !important;
+        line-height: 32px !important;
+        padding: 0 15px 40px;
     }
 
     /* CONTACT SECTION */
     .contact-form {
-        width: 90% !important;
-        max-width: 320px !important;
-        padding-bottom: 100px;
+        width: 100% !important;
+        max-width: 350px !important;
+        padding: 30px 20px !important;
+        margin-bottom: 50px;
     }
 
     .submit-btn {
         width: 100% !important;
         margin-right: 0 !important;
         align-self: center !important;
+    }
+
+    /* FOOTER ROW */
+    .footer-container {
+        margin-top: 50px;
+        padding: 20px 10px;
+        text-align: center;
+    }
+
+    .footer-email {
+        font-size: 14px;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    /* FLOATING ACTION BUTTON FIX */
+    .footer-right {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .footer-message-fab {
+        width: 60px;
+        height: 60px;
+        padding: 0;
+        border-radius: 50%;
+        gap: 0;
+    }
+
+    .fab-text {
+        display: none;
+        /* Hide text to keep it perfectly round on mobile */
+    }
+
+    .fab-icon {
+        width: 28px;
+        height: 28px;
+        margin: 0;
+        transform: rotate(0deg);
+    }
+
+    .footer-message-fab:hover .fab-icon {
+        transform: scale(1.1);
     }
 }
 
@@ -1419,7 +1486,7 @@ h2 {
     }
 
     .me-image {
-        width: 450px;
+        width: 380px;
     }
 }
 
@@ -1427,7 +1494,7 @@ h2 {
 
     /* Hero - Centering and Scaling */
     .me-image {
-        width: 380px;
+        width: 320px;
     }
 
     /* Override slideRight for centered position on mobile/tablet */
@@ -1554,23 +1621,25 @@ h2 {
 
     /* Form responsiveness */
     .contact-form {
-        width: 90%;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 25px 15px !important;
     }
 
     .input-group label {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .input-group input,
     .input-group textarea {
-        font-size: 16px;
-        padding: 12px;
+        font-size: 14px;
+        padding: 10px;
     }
 
     .submit-btn {
-        width: 100%;
-        margin-right: 0;
-        align-self: center;
+        width: 100% !important;
+        margin-right: 0 !important;
+        align-self: center !important;
     }
 }
 
@@ -1587,4 +1656,688 @@ h2 {
     100% {
         background-position: 0% 50%;
     }
+}
+
+/* --- NEW GRAPHICAL ELEMENTS --- */
+
+/* Background Grid */
+.bg-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Glowing Orbs */
+.bg-orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.3;
+    animation: floatOrb 12s infinite alternate ease-in-out;
+}
+
+.orb-1 {
+    width: 350px;
+    height: 350px;
+    background: #89E900;
+    top: -100px;
+    left: -100px;
+}
+
+.orb-2 {
+    width: 450px;
+    height: 450px;
+    background: #00aaff;
+    bottom: -150px;
+    right: -100px;
+    animation-delay: -4s;
+}
+
+.orb-3 {
+    width: 250px;
+    height: 250px;
+    background: #ff0055;
+    top: 40%;
+    left: 60%;
+    animation-delay: -8s;
+}
+
+@keyframes floatOrb {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(60px, 60px) scale(1.1);
+    }
+}
+
+/* Section Dividers */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    z-index: 2;
+    position: relative;
+    opacity: 0.8;
+}
+
+.section-divider .glow-line {
+    height: 2px;
+    width: 30%;
+    background: linear-gradient(90deg, transparent, rgba(137, 233, 0, 0.6), transparent);
+}
+
+.section-divider .glow-dot {
+    width: 10px;
+    height: 10px;
+    background: #89E900;
+    border-radius: 50%;
+    margin: 0 20px;
+    box-shadow: 0 0 10px #89E900, 0 0 20px rgba(137, 233, 0, 0.8);
+}
+
+/* Floating Shapes in Hero Section */
+.floating-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.3;
+    animation: spinFloat 20s linear infinite;
+    border: 2px solid #89E900;
+}
+
+.shape-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    top: 25%;
+    left: 20%;
+}
+
+.shape-square {
+    width: 50px;
+    height: 50px;
+    top: 75%;
+    left: 75%;
+    animation-direction: reverse;
+    animation-duration: 25s;
+    border-color: #00aaff;
+}
+
+.shape-circle-2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    top: 40%;
+    left: 80%;
+    border-color: #ff0055;
+    animation-duration: 30s;
+}
+
+@keyframes spinFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(360deg);
+    }
+}
+
+/* --- NAVBAR & FOOTER GRAPHICAL ENHANCEMENTS --- */
+
+/* Nav Glow Bar */
+.nav-glow-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #89E900, rgba(0, 170, 255, 0.8), transparent);
+    background-size: 200% 100%;
+    animation: slideGlowBar 4s linear infinite;
+    z-index: 1;
+}
+
+/* Footer Glow Bar */
+.footer-glow-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #89E900, rgba(0, 170, 255, 0.8), transparent);
+    background-size: 200% 100%;
+    animation: slideGlowBar 4s linear infinite reverse;
+    z-index: 1;
+}
+
+@keyframes slideGlowBar {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* Give footer hidden overflow for particles */
+.footer-container {
+    overflow: hidden;
+}
+
+/* Particles Container */
+.nav-particles,
+.footer-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Base Particle Style */
+.nav-particle,
+.footer-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: #89E900;
+    opacity: 0.5;
+    animation: floatParticle 3s ease-in-out infinite alternate;
+}
+
+.nav-particle.p1 {
+    width: 4px;
+    height: 4px;
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+    box-shadow: 0 0 5px #89E900;
+}
+
+.nav-particle.p2 {
+    width: 6px;
+    height: 6px;
+    left: 40%;
+    top: 60%;
+    animation-delay: 1.2s;
+    background: #00aaff;
+    box-shadow: 0 0 6px #00aaff;
+}
+
+.nav-particle.p3 {
+    width: 3px;
+    height: 3px;
+    left: 80%;
+    top: 30%;
+    animation-delay: 2.5s;
+    box-shadow: 0 0 4px #89E900;
+}
+
+.footer-particle.p1 {
+    width: 5px;
+    height: 5px;
+    left: 20%;
+    top: 30%;
+    animation-delay: 0s;
+    box-shadow: 0 0 5px #89E900;
+}
+
+.footer-particle.p2 {
+    width: 3px;
+    height: 3px;
+    left: 60%;
+    top: 70%;
+    animation-delay: 1.5s;
+    background: #00aaff;
+    box-shadow: 0 0 4px #00aaff;
+}
+
+.footer-particle.p3 {
+    width: 6px;
+    height: 6px;
+    left: 85%;
+    top: 40%;
+    animation-delay: 0.8s;
+    box-shadow: 0 0 6px #89E900;
+}
+
+.footer-particle.p4 {
+    width: 4px;
+    height: 4px;
+    left: 40%;
+    top: 20%;
+    animation-delay: 2.2s;
+    background: #00aaff;
+    box-shadow: 0 0 4px #00aaff;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.2;
+    }
+
+    100% {
+        transform: translateY(-12px) scale(1.5);
+        opacity: 0.9;
+    }
+}
+
+/* --- BUTTON EFFECTS --- */
+
+.menu a.hire,
+.submit-btn,
+.footer-message-fab {
+    position: relative;
+    overflow: hidden;
+}
+
+.menu a.hire {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+/* Dynamic Glow inside the button */
+.btn-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, transparent, transparent, #fff, transparent);
+    animation: rotateGlow 3s linear infinite;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@keyframes rotateGlow {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Specific button sparkles */
+.btn-sparkles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sparkle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 6px white;
+    opacity: 0;
+    animation: popSparkle 2s ease-in-out infinite;
+}
+
+.sparkle.s1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.sparkle.s2 {
+    top: 70%;
+    left: 80%;
+    animation-delay: 0.7s;
+}
+
+.sparkle.s3 {
+    top: 40%;
+    left: 50%;
+    animation-delay: 1.4s;
+}
+
+@keyframes popSparkle {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+/* --- TITLE TEXT EFFECTS (GRAPHICAL ELEMENTS IN TEXT) --- */
+
+.title-effect {
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    /* Hidden initially so scroll animation pops them down */
+}
+
+/* Bright neon solid color applied directly to the text */
+.title-effect .title-text {
+    position: relative;
+    z-index: 2;
+    color: #89e900;
+    /* Bright yellow-green neon */
+    display: inline-block;
+    /* Deep black offset shadow on right/back side + soft outer neon glow */
+    text-shadow: 6px 6px 8px rgba(0, 0, 0, 0.9), 2px 2px 4px rgba(0, 0, 0, 1), 0 0 5px rgba(137, 233, 0, 0.2);
+}
+
+/* Pulsing neon aura directly behind the text */
+.title-effect::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(137, 233, 0, 0.2) 0%, transparent 70%);
+    filter: blur(10px);
+    z-index: 0;
+    opacity: 0.2;
+    animation: pulseGlow 3s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.3;
+    }
+}
+
+/* Ensure button sparkles function exactly the same on the title */
+.title-effect .btn-sparkles {
+    overflow: visible;
+}
+
+/* =========================================================
+   MAXIMUM GRAPHICAL ELEMENTS
+   ========================================================= */
+
+
+/* --- 2. Scroll Progress Bar --- */
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 10000;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00ffcc, #00bfff, #ff00ff);
+    background-size: 200% 100%;
+    animation: gradientMove 3s linear infinite;
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00bfff;
+    border-radius: 0 5px 5px 0;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* --- 3. Ambient Section Glows (Massive background lighting) --- */
+.section-ambient {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.15;
+    /* Subtly lights up the room */
+    animation: ambientFloat 15s ease-in-out infinite alternate;
+}
+
+.glow-green {
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, #00ffcc 0%, transparent 70%);
+    top: 20%;
+    left: -20%;
+}
+
+.glow-blue {
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, #00bfff 0%, transparent 70%);
+    top: 10%;
+    right: -10%;
+    animation-direction: alternate-reverse;
+}
+
+.glow-magenta {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #ff00ff 0%, transparent 70%);
+    bottom: -10%;
+    left: 10%;
+    animation-delay: -5s;
+}
+
+.glow-green-alt {
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle, rgba(0, 255, 204, 0.8) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ambientPulseCenter 10s ease-in-out infinite alternate;
+}
+
+.glow-cyan {
+    width: 1200px;
+    height: 800px;
+    background: radial-gradient(ellipse, #00ffcc 0%, transparent 70%);
+    bottom: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.12;
+}
+
+@keyframes ambientFloat {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(100px) scale(1.1);
+    }
+}
+
+@keyframes ambientPulseCenter {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+/* Ensure body doesn't cause weird scrolling because of ambient orbs bleeding off */
+body {
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   CLEAN & PROFESSIONAL PREMIUM GRAPHICAL UPGRADES
+   ========================================================= */
+
+/* 1. Animated Gradient Texts for Subheadings to catch the eye */
+.about-role,
+.skills-heading .title-text,
+.software-heading .title-text {
+    background: linear-gradient(to right, #89E900, #00ffcc, #89E900);
+    background-size: 200% auto;
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    -webkit-background-clip: text;
+    background-clip: text;
+    text-shadow: none !important;
+}
+
+/* Original wipe-reveal entrance animation for the main subtitle */
+.subtitle {
+    animation: wipeReveal 1s ease forwards 1.6s;
+    color: white;
+    /* explicitly keep it white */
+}
+
+.about-role,
+.skills-heading .title-text,
+.software-heading .title-text {
+    animation: shineText 4s linear infinite;
+}
+
+@keyframes shineText {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* 2. Elegant Inner Edge Glows for all Glass Panels */
+.skills-left,
+.skills-right,
+.about-text,
+.contact-form {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Adds a beautiful crisp light across the top inner border of the panels */
+.skills-left::before,
+.skills-right::before,
+.about-text::before,
+.contact-form::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    opacity: 0.5;
+    z-index: 10;
+}
+
+/* Adds a fading gradient from bottom to give depth inside the box */
+.skills-left::after,
+.skills-right::after,
+.about-text::after,
+.contact-form::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(137, 233, 0, 0.03), transparent);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 3. Aura Glow Behind Hero Images & Portraits */
+.hero .me-image,
+.about-image {
+    filter: drop-shadow(0 0 30px rgba(137, 233, 0, 0.15)) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.5));
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.hero .me-image:hover,
+.about-image:hover {
+    filter: drop-shadow(0 0 50px rgba(137, 233, 0, 0.3)) drop-shadow(0 20px 20px rgba(0, 0, 0, 0.6));
+    transform: translateY(-5px);
+}
+
+/* 4. Elegant Interactive List Items */
+.skills-list li,
+.software-list li {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 5. Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #89E900;
 }
