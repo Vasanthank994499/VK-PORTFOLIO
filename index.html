@@ -14,13 +14,31 @@
     <title>Vasanthan Portfolio | Video Editor & Creative Designer</title>
 
     <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Max Graphical Effects: Scroll Progress -->
+    <div class="scroll-progress-container">
+        <div class="scroll-progress-bar"></div>
+    </div>
 
     <header>
         <nav>
+            <!-- Nav Graphical Elements -->
+            <div class="nav-glow-bar"></div>
+            <div class="nav-particles">
+                <div class="nav-particle p1"></div>
+                <div class="nav-particle p2"></div>
+                <div class="nav-particle p3"></div>
+            </div>
+
             <div class="hamburger" aria-label="Toggle Menu">
                 <span></span>
                 <span></span>
@@ -35,23 +53,58 @@
                 <a href="#work">Work</a>
                 <span class="nav-separator" aria-hidden="true">|</span>
                 <a href="#about">About</a>
-                <a href="#hire" class="hire">Hire Me</a>
+                <a href="#hire" class="hire">
+                    <span class="btn-text">Hire Me</span>
+                    <span class="btn-glow"></span>
+                    <span class="btn-sparkles">
+                        <i class="sparkle s1"></i>
+                        <i class="sparkle s2"></i>
+                        <i class="sparkle s3"></i>
+                    </span>
+                </a>
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- Graphical Elements -->
+        <div class="bg-grid"></div>
+        <div class="bg-orb orb-1"></div>
+        <div class="bg-orb orb-2"></div>
+        <div class="bg-orb orb-3"></div>
+
         <article id="home" class="hero page-section active-section">
+            <div class="floating-shapes">
+                <div class="shape shape-circle"></div>
+                <div class="shape shape-square"></div>
+                <div class="shape shape-circle-2"></div>
+            </div>
             <img src="ME.png" class="me-image" alt="Vasanthan K Profile Picture">
             <h1 class="hello">Hello!</h1>
             <p class="subtitle">I'm Vasanthan K</p>
             <p class="role">VIDEO EDITOR & GRAPHIC DESIGNER</p>
         </article>
 
+        <div class="section-divider">
+            <div class="glow-line"></div>
+            <div class="glow-dot"></div>
+            <div class="glow-line"></div>
+        </div>
+
         <section id="skills" class="page-section">
+            <!-- Ambient Section Glow -->
+            <div class="section-ambient glow-green"></div>
+
             <div class="skills-split">
                 <div class="skills-left">
-                    <h2 class="skills-heading">Skills</h2>
+                    <h2 class="skills-heading title-effect">
+                        <span class="title-text">Skills</span>
+                        <span class="btn-sparkles">
+                            <i class="sparkle s1"></i>
+                            <i class="sparkle s2"></i>
+                            <i class="sparkle s3"></i>
+                        </span>
+                    </h2>
                     <ul class="skills-list">
                         <li>Expert Video Editing</li>
                         <li>High-End Motion Graphics</li>
@@ -63,7 +116,14 @@
                 </div>
 
                 <div class="skills-right">
-                    <h2 class="software-heading">Software</h2>
+                    <h2 class="software-heading title-effect">
+                        <span class="title-text">Software</span>
+                        <span class="btn-sparkles">
+                            <i class="sparkle s1"></i>
+                            <i class="sparkle s2"></i>
+                            <i class="sparkle s3"></i>
+                        </span>
+                    </h2>
                     <ul class="software-list">
                         <li><img src="Premier Pro.png" alt="Adobe Premiere Pro" class="software-icon software-icon-lg">
                             Premiere Pro</li>
@@ -82,8 +142,25 @@
             </div>
         </section>
 
+        <div class="section-divider">
+            <div class="glow-line"></div>
+            <div class="glow-dot"></div>
+            <div class="glow-line"></div>
+        </div>
+
         <section id="work" class="page-section">
-            <h2>My Work</h2>
+            <!-- Ambient Section Glow -->
+            <div class="section-ambient glow-blue"></div>
+            <div class="section-ambient glow-magenta"></div>
+
+            <h2 class="title-effect">
+                <span class="title-text">My Work</span>
+                <span class="btn-sparkles">
+                    <i class="sparkle s1"></i>
+                    <i class="sparkle s2"></i>
+                    <i class="sparkle s3"></i>
+                </span>
+            </h2>
             <div class="work-grid">
                 <a href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1" target="_blank" class="work-item"
                     aria-label="Watch Portfolio Video 1">
@@ -124,12 +201,28 @@
             </div>
         </section>
 
+        <div class="section-divider">
+            <div class="glow-line"></div>
+            <div class="glow-dot"></div>
+            <div class="glow-line"></div>
+        </div>
+
         <article id="about" class="page-section">
-            <h2>About Me</h2>
+            <!-- Ambient Section Glow -->
+            <div class="section-ambient glow-green-alt"></div>
+
+            <h2 class="title-effect">
+                <span class="title-text">About Me</span>
+                <span class="btn-sparkles">
+                    <i class="sparkle s1"></i>
+                    <i class="sparkle s2"></i>
+                    <i class="sparkle s3"></i>
+                </span>
+            </h2>
             <div class="about-container">
                 <img src="MEE.png" alt="Vasanthan K Portrait" class="about-image">
                 <div class="about-text">
-                    <h3 class="about-name">My name is Vasanthan K.</h3>
+                    <h3 class="about-name">My name is Vasanthan K</h3>
                     <p class="about-role">Professional Video Editor & Graphic Designer</p>
                     <p>I focus on creating high-impact, clean, and engaging edits for modern digital content. My passion
                         lies in fast-paced storytelling and building strong visual identities through design.</p>
@@ -137,8 +230,24 @@
             </div>
         </article>
 
+        <div class="section-divider">
+            <div class="glow-line"></div>
+            <div class="glow-dot"></div>
+            <div class="glow-line"></div>
+        </div>
+
         <section id="hire" class="page-section">
-            <h2>Start a Project</h2>
+            <!-- Ambient Section Glow -->
+            <div class="section-ambient glow-cyan"></div>
+
+            <h2 class="title-effect">
+                <span class="title-text">Start a Project</span>
+                <span class="btn-sparkles">
+                    <i class="sparkle s1"></i>
+                    <i class="sparkle s2"></i>
+                    <i class="sparkle s3"></i>
+                </span>
+            </h2>
             <div class="contact-form">
                 <div class="input-group">
                     <label for="name">Your Name</label>
@@ -163,12 +272,29 @@
                     <textarea id="message" name="message" placeholder="Tell me more about your project..." rows="5"
                         required></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Hire Me</button>
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Hire Me</span>
+                    <span class="btn-glow"></span>
+                    <span class="btn-sparkles">
+                        <i class="sparkle s1"></i>
+                        <i class="sparkle s2"></i>
+                        <i class="sparkle s3"></i>
+                    </span>
+                </button>
             </div>
         </section>
     </main>
 
     <footer class="footer-container">
+        <!-- Footer Graphical Elements -->
+        <div class="footer-glow-bar"></div>
+        <div class="footer-particles">
+            <div class="footer-particle p1"></div>
+            <div class="footer-particle p2"></div>
+            <div class="footer-particle p3"></div>
+            <div class="footer-particle p4"></div>
+        </div>
+
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vasanthankasvk@gmail.com" target="_blank"
             class="footer-email" aria-label="Primary Contact Email">
             <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Logo" class="footer-icon">
@@ -179,9 +305,15 @@
     <aside class="footer-right">
         <a href="https://wa.me/919944994532" target="_blank" class="footer-message-fab"
             aria-label="Instant WhatsApp Message">
-            <span class="fab-text">Message</span>
+            <span class="fab-text" style="position: relative; z-index: 2;">Message</span>
             <img src="https://cdn-icons-png.flaticon.com/512/60/60525.png" alt="WhatsApp Icon"
-                class="footer-icon fab-icon">
+                class="footer-icon fab-icon" style="position: relative; z-index: 2;">
+            <span class="btn-glow"></span>
+            <span class="btn-sparkles">
+                <i class="sparkle s1"></i>
+                <i class="sparkle s2"></i>
+                <i class="sparkle s3"></i>
+            </span>
         </a>
     </aside>
 
