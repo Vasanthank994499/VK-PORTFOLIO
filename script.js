@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 navLinks.forEach(l => l.classList.remove('active'));
                 if (navLink) navLink.classList.add('active');
 
-                sections.forEach(s => s.classList.remove('active-section'));
+                // Do NOT globally remove active-section to prevent sections disappearing while still on screen.
                 entry.target.classList.add('active-section');
 
                 // Restart animations
@@ -235,7 +235,22 @@ document.addEventListener('DOMContentLoaded', function () {
             const mailtoLink = `mailto:vasanthankasvk@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(emailBody)}`;
 
             // Trigger the mail app
-            window.location.href = mailtoLink;
         });
     }
+
+    // ==========================================
+    // MAX GRAPHICAL ELEMENTS JAVASCRIPT LOGIC
+    // ==========================================
+
+    // 1. Scroll Progress Bar
+    const progressBar = document.querySelector('.scroll-progress-bar');
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        if (progressBar) {
+            progressBar.style.width = scrollPercent + '%';
+        }
+    });
+
 });
