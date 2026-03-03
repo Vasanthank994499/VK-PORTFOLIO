@@ -216,9 +216,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // CONTACT FORM EMAIL LOGIC
-    const submitBtn = document.querySelector('.submit-btn');
-    if (submitBtn) {
-        submitBtn.addEventListener('click', function (e) {
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
             // Get all input values
@@ -235,6 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const mailtoLink = `mailto:vasanthankasvk@gmail.com?subject=Portfolio Inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(emailBody)}`;
 
             // Trigger the mail app
+            window.location.href = mailtoLink;
         });
     }
 
