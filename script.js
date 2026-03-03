@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('.hamburger');
     const menu = document.querySelector('.menu');
 
+    // Init mobile active tab to home on load
+    const homeSection = document.querySelector('#home');
+    if (homeSection) homeSection.classList.add('mobile-active-section');
+
     if (hamburger && menu) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
@@ -42,7 +46,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 if (targetEl) {
-                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                    if (window.innerWidth <= 600) {
+                        document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('mobile-active-section'));
+                        targetEl.classList.add('mobile-active-section');
+                        window.scrollTo(0, 0);
+                    } else {
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             }
         });
@@ -68,6 +78,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Do NOT globally remove active-section to prevent sections disappearing while still on screen.
                 entry.target.classList.add('active-section');
+
+                // Track active section for mobile tab-switching
+                document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('mobile-active-section'));
+                entry.target.classList.add('mobile-active-section');
 
                 // Restart animations
                 if (id === 'skills') {
